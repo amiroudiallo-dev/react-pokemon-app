@@ -53,7 +53,7 @@ const PokemonForm: FunctionComponent<Props> = ({pokemon}) => {
                 {/* Pokemon name */}
                 <div className="form-group">
                   <label htmlFor="name">Nom</label>
-                  <input id="name" type="text" className="form-control" value={form.name?.value}></input>
+                  <input id="name" type="text" className="form-control" value={Form.name.value}></input>
                 </div>
                 {/* Pokemon hp */}
                 <div className="form-group">
