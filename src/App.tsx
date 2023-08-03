@@ -1,20 +1,28 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
-import Pokemon from './models/pokemon';
-import POKEMONS from './models/mock-pokemon';
+import React, { FunctionComponent } from 'react';
 import PokemonList from './pages/PokemonList';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import PokemonsDetail from './pages/PokemonDetails';
+import PageNotFound from './pages/PageNotFound';
   
 const App: FunctionComponent = () => {
-// //  const [name, updateName] = useState<String>('Ali');
-//     const [pokemons, updatePokemons] = useState<Pokemon[]>([]);
-
-//     useEffect(() => {
-//         updatePokemons(POKEMONS)
-//     }, []);
-
  return (
-  <>
-    <PokemonList />
-  </>
+  <Router>
+    <div>
+        {/*** la barre de navigation commun a toutes les pages ***/}
+      <nav>
+        <div className="navbar-wrapper teal"> 
+          <Link to="/" className="brand-logo center">Pokédex</Link>
+        </div>
+      </nav>
+      {/** le systeme de gestion de navigation de notre application */}
+      <Switch>
+        <Route exact path="/" component={PokemonList} />
+        <Route exact path="/pokemons" component={PokemonList} />
+        <Route exact path="/pokemons/:id" component={PokemonsDetail} />
+        <Route component={PageNotFound} />
+      </Switch>
+    </div>
+  </Router>
  )
 }
   
